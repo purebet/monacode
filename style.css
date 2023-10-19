@@ -1,0 +1,35 @@
+body {
+   background-color: black;
+   color: white;
+   font-family: Arial;
+
+}
+table#display {
+   border-collapse: collapse;
+}
+table#display td, table#display th {
+   border-bottom: 0.5px solid rgb(37, 37, 37);
+}
+table#display th:not(:last-child), table#display td:not(:last-child) {
+   border-right: 0.5px solid rgb(37, 37, 37);
+}
+table#display tr:nth-child(odd) {
+   background-color: #2e2d2d;
+}
+@keyframes flashBlue {
+   0% { background-color: #25a5e9; }
+   100% { background-color: initial; }
+}
+.flashBlue {
+   animation-name: flashBlue;
+   animation-duration: 2s;
+   animation-fill-mode: both;
+}
+th, td {
+   padding: 15px;
+   text-align: center;
+}
+img {
+   float: left;
+   margin-right: 10px;
+}
