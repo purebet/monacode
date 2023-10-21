@@ -75,6 +75,11 @@ function progAccHandler(payload, context){
         */
     }
     mktInfos[mkt].liquidity[outcomeInd][side].push(obEntry);
-    mktInfos[mkt].liquidity[outcomeInd][side].sort((a, b) => b.odds - a.odds);
+    if(side == "back"){
+        mktInfos[mkt].liquidity[outcomeInd][side].sort((a, b) => b.odds - a.odds);
+    }
+    else if(side == "lay"){
+        mktInfos[mkt].liquidity[outcomeInd][side].sort((a, b) => a.odds - b.odds);
+    }
     update(mkt, outcomeInd, side);
 }

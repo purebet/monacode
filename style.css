@@ -4,6 +4,21 @@ body {
    font-family: Arial;
 
 }
+.container {
+   display: flex;
+}
+.feed {
+   margin-left: 100px;
+   border: 2px solid #2e2d2d;
+   min-width: 800px;
+}
+
+#msg li {
+   font-size: 14pt;
+   background-color: rgb(37, 37, 37);
+   padding: 5px;
+   border: 1px solid #2e2d2d;
+}
 table#display {
    border-collapse: collapse;
 }
@@ -33,3 +48,20 @@ img {
    float: left;
    margin-right: 10px;
 }
+
+.new-message p {
+   margin: 0;
+}
+
+.new-message .timestamp {
+   font-size: 0.8em;
+}
+
+/* @keyframes moveUp {
+   from { transform: translateY(0); }
+   to { transform: translateY(-100%); }
+}
+
+.new-message {
+   animation: moveUp 3s;
+} */

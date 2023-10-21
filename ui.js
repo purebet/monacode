@@ -79,19 +79,22 @@ function display(){
 }
 
 const outIndToSide3 = {
-    0:"home",
-    2:"away",
-    1:"draw"
+    0:"Home",
+    2:"Away",
+    1:"Draw"
 }
 const outIndToSide2 = {
-    0:"home",
-    1:"away",
+    0:"Home",
+    1:"Away",
 }
 
 function update(mkt, outInd, side){
     var msg = document.getElementById("msg");
     let newTopOdds = topOdds(mktInfos[mkt].liquidity[outInd][side]);
     let cell = document.getElementById(mkt + outInd + side);
+    if(cell.innerHTML == newTopOdds){
+        return;
+    }
     cell.innerHTML = newTopOdds;
     let team
     if(mktInfos[mkt].liquidity.length == 2){
@@ -101,7 +104,8 @@ function update(mkt, outInd, side){
     }
     let newOddsMsg = `Top odds for ${mktInfos[mkt].name} - ${side}ing ${team} changed to ${newTopOdds}.`
     let removedMsg = `Offer removed for ${mktInfos[mkt].name} - ${side}ing ${team}`
-    msg.innerHTML = newTopOdds != "-" ? newOddsMsg : removedMsg
+    let message = newTopOdds != "-" ? newOddsMsg : removedMsg
+    displayMessage(message)
     // msg.innerHTML = "top odds changed to " + newTopOdds + 
     //     " for " + mktInfos[mkt].name + 
     //     ", outcome: " + outInd + 
@@ -116,3 +120,72 @@ function update(mkt, outInd, side){
         row.classList.remove('flashBlue');
     });
 }
+
+function timeSince(date) {
+    var seconds = Math.floor((new Date() - date) / 1000);
+    var interval = seconds / 31536000;
+
+    if (interval > 1) {
+        return Math.floor(interval) + " years ago";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+        return Math.floor(interval) + " months ago";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+        return Math.floor(interval) + " days ago";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+        return Math.floor(interval) + " hours ago";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+        return Math.floor(interval) + " minutes ago";
+    }
+    return Math.floor(seconds) + " seconds ago";
+}
+
+function displayMessage(message) {
+    var list = document.getElementById('msg');
+    var item = document.createElement('li');
+    item.classList.add('new-message');
+    list.appendChild(item);
+
+    var messageElement = document.createElement('p');
+    messageElement.textContent = message;
+    item.appendChild(messageElement);
+
+    var timestampElement = document.createElement('p');
+    timestampElement.textContent = timeSince(new Date());
+    timestampElement.classList.add('timestamp');
+    item.appendChild(timestampElement);
+    item.setAttribute('data-time', new Date().getTime());
+
+    setInterval(function() {
+        timestampElement.textContent = " - " + timeSince(new Date(parseInt(item.getAttribute('data-time'))));
+    }, 1000);
+
+    setTimeout(function() {
+        list.removeChild(item);
+    }, 30000);
+}
+
+// function updateTimestamps() {
+//     var messages = document.querySelectorAll('#msg li');
+//     messages.forEach(function(message) {
+//         var time = new Date(parseInt(message.getAttribute('data-time')));
+//         var timestamp = message.querySelector('span');
+//         if (timestamp) {
+//             timestamp.textContent = " - " + timeSince(time);
+//         }
+//         else {
+//             timestamp = document.createElement('span');
+//             timestamp.textContent = " - " + timeSince(time);
+//             message.appendChild(timestamp);
+//         }
+//     });
+// }
+
+// setInterval(updateTimestamps, 1000);

@@ -22,23 +22,31 @@
         <img src="./monasock.png" alt="Logo" style="float: left; margin-right: 10px;" width="100" height="auto">
         <h1> Monasock </h1>
         <h2> Efficient websocket based odds updates for the Monaco Protocol </h2>
-        <div id = "msg"> Loading </div>
-        <table id = "display">
-            <tr>
-                <th colspan="1">Event</th>
-                <th colspan="2">Home</th>
-                <th colspan="2">Away</th>
-                <th colspan="2">Draw</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Back</th>
-                <th>Lay</th>
-                <th>Back</th>
-                <th>Lay</th>
-                <th>Back</th>
-                <th>Lay</th>
-            </tr>
-        </table>
+        <!-- <div id = "msg"> Loading </div> -->
+        <div class="container">
+            <table id = "display">
+                <tr>
+                    <th colspan="1">Event</th>
+                    <th colspan="2">Home</th>
+                    <th colspan="2">Away</th>
+                    <th colspan="2">Draw</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Back</th>
+                    <th>Lay</th>
+                    <th>Back</th>
+                    <th>Lay</th>
+                    <th>Back</th>
+                    <th>Lay</th>
+                </tr>
+            </table>
+            <div class="feed">
+                <h1>Update feed</h1>
+                <ul id="msg">
+                    <li>Loading</li>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
