@@ -2,7 +2,7 @@ var bets = new Set([]);
 var mktInfos = {}; //need market addrs --> name, list of outcome ids
 var mkts = [];
 var mktsToSkip = new Set([]);
-var connection = new solanaWeb3.Connection("https://evocative-cosmopolitan-sunset.solana-mainnet.quiknode.pro/a4ed38ac241d30e8bc92f1bd77599be187c6e267/");
+var connection = new solanaWeb3.Connection("https://dawn-attentive-fog.solana-mainnet.quiknode.pro/8cb0690c5bbaffba99f07b0d188c5aa43f99c4b8/");
 var monaco = new solanaWeb3.PublicKey("monacoUXKtUi6vKsQwaLyxmXKSievfNWEcYXTgkbCih");
 
 function lilEndInt(arr){
